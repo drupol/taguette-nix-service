@@ -4,7 +4,12 @@
 }:
 {
   flake.processComposeModules.taguette =
-    { config, pkgs, options, ... }:
+    {
+      config,
+      pkgs,
+      options,
+      ...
+    }:
     let
       cfg = config.services.taguette;
       opt = options.services.taguette;
@@ -125,7 +130,13 @@
             let
               configFile = settingsFormat.generate "config" (cfg.settings);
             in
-            ''${lib.getExe cfg.package} --no-browser server ${configFile}'';
+            ''
+              if [ ! -d "${cfg.dataDir}" ]; then
+                echo "Creating directory ${cfg.dataDir}"
+                mkdir -p "${cfg.dataDir}"
+              fi
+              ${lib.getExe cfg.package} --no-browser server ${configFile}
+            '';
 
           availability.restart = "on_failure";
           readiness_probe = {
