@@ -18,6 +18,10 @@ The following services will be available at the following addresses:
 
 - Taguette: http://localhost:7465
 
+> Note: On MacOS, you might need to install [`calibre`] by yourself, as it is not
+> available for MacOS in Nix.
+
 [`process-compose`]: https://github.com/F1bonacc1/process-compose
 [`services-flakes`]: https://github.com/juspay/services-flake/
 [Taguette]: https://www.taguette.org/
+[`calibre`]: https://calibre-ebook.com/
