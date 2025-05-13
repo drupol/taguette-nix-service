@@ -11,7 +11,7 @@ The data are kept in the current directory (`./data`) where you run the command.
 To run it:
 
 ```shell
-nix run github:drupol/taguette-nix-flake
+nix run github:drupol/taguette-nix-service
 ```
 
 The following services will be available at the following addresses:
